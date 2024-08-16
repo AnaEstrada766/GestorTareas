@@ -1,9 +1,9 @@
 import "./styles.css";
 import { addTask, deleteTask, toggleTask } from "./task";
-import { renderTask} from "./ui";
+import { renderTasks} from "./ui";
 
 document.addEventListener("DOMContentLoaded", ()=> {
-    renderTask();
+    renderTasks();
 
     document.getElementById("task-form").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -11,23 +11,24 @@ document.addEventListener("DOMContentLoaded", ()=> {
         const taskInput = document.getElementById("task-input").value
         if(taskInput !== "") {
             addTask(taskInput);
-            renderTask();
+            renderTasks();
             //Limpiar cuadro de texto
             document.getElementById("task-input").value = "";
         }
     });
 
-    document.getElementById("task-list").addEventListener("click", () =>{
-        if(e.target.classList("delete")){
+    document.getElementById("task-list").addEventListener("click", (e) => {
+        if(e.target.classList.contains("delete")){
             const taskId = e.target.parentElement.getAttribute("data-id");
             deleteTask(taskId);
-            renderTask();
+            renderTasks();
         }
-        
-        if(e.target.classList("toggle")) {
+    
+        if(e.target.classList.contains("toggle")) {
             const taskId = e.target.parentElement.getAttribute("data-id");
             toggleTask(taskId);
-            renderTask;
+            renderTasks();
         }
     });
+    
 });

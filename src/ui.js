@@ -1,12 +1,12 @@
 //Importar la funcion para traer las tareas del localStorage
-import { addTask, getTask } from "./task";
+import { getTasks } from "./task";
 
 //Funcion para visualizar las tareas
 export const renderTasks = () => {
     const taskList = document.getElementById("task-list");
     taskList.innerHTML = "";
     const tasks = getTasks();
-    tasks.foreach((task) =>{
+    tasks.forEach((task) =>{
         const li = document.createElement("li");
         li.setAttribute("data-id", task.id);
 
@@ -19,6 +19,6 @@ export const renderTasks = () => {
         <button class="delete"> Borrar </button>
         <button class="toggle"> ${task.completed === true ? "Regresar" : "Completado"} </button>
         `;
-        taskList.appendChild()        
+        taskList.appendChild(li);        
     });
 }

@@ -17,7 +17,7 @@ module.exports = {
                     test: /\.js$/, //Regex """" js
                     exclude: /node_modules/,
                     use: {
-                        loader: 'babe-loader', //loader para llevar JS moderno a JS antiguo para que sea compatible con todos los navegadores
+                        loader: 'babel-loader', //loader para llevar JS moderno a JS antiguo para que sea compatible con todos los navegadores
                         options: {
                             presets: ['@babel/preset-env'],
                         },
@@ -25,7 +25,7 @@ module.exports = {
                 },
             ],
         },
-        devtools: 'source-map', //Generar source maps para facilitar la depuracion
+        devtool: 'source-map', //Generar source maps para facilitar la depuracion
         devServer:{
             static: {
                 directory: path.resolve(__dirname, 'dist'),      
